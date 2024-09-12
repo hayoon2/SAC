@@ -1,17 +1,10 @@
 (function () {
     const template = document.createElement('template');
     template.innerHTML = `
-        <style>
-            /* 스타일을 여기에 추가 */
-            #root {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: lightgray; /* 예시 스타일 */
-            }
+        <styte>
         </style>
-        <div id="root" style="width: 100%; height: 100%;">
-            Hello Custom Widget
+        <div id="root" style="width: 100%; height: 100%;"> 
+        Hello Custom Widget
         </div>
     `;
 
@@ -38,7 +31,7 @@
         // 렌더링 메소드
         render() {
             // 크기 조정 시 clientWidth와 clientHeight를 업데이트
-            this._root.textContent = `Hello Custom Widget - clientWidth: ${this._root.clientWidth}, clientHeight: ${this._root.clientHeight}`;
+            this._root.textContent = `Hello Custom Widget client ${this.clientWidth}, clientHeight${this.clientHeight}`;
         }
     }
 
