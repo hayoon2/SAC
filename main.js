@@ -47,10 +47,15 @@ var parseMetadata = metadata => {
       this.render()
     }
 
-
     onCustomWidgetDestroy () {
+      if (this._eChart && echarts) { echarts.dispose(this._eChart) }
+    }
 
-  }
+    setSeriesType (seriesType) {
+      this.seriesType = seriesType
+      this.dispatchEvent(new CustomEvent('propertiesChanged', { detail: { properties: { seriesType } } }))
+      this.render()
+    }
 
     async render () {
       const dataBinding = this.dataBinding
@@ -62,6 +67,7 @@ var parseMetadata = metadata => {
       const { dimensions, measures } = parseMetadata(metadata)
       // dimension
       const categoryData = []
+
       // measures
       const series = measures.map(measure => {
         return {
@@ -69,10 +75,11 @@ var parseMetadata = metadata => {
           name: measure.label,
           data: [],
           key: measure.key,
-          type: 'line',
+          type: this.seriesType || 'line',
           smooth: true
         }
       })
+
       data.forEach(row => {
         categoryData.push(dimensions.map(dimension => {
           return row[dimension.key].label
