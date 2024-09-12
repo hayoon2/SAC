@@ -8,15 +8,27 @@
         </div>
     `
     class Main extends HTMLElement {
-      constructor () {
-        super()
-    
-        this._shadowRoot = this.attachShadow({ mode: 'open' })
-        this._shadowRoot.appendChild(template.content.cloneNode(true)) 
-        this._root = this._shadowRoot.getElementById('root')
-      }
+        constructor() {
+            super();
+
+            this._shadowRoot = this.attachShadow({ mode: "open" });
+            this._shadowRoot.appendChild(template.content.cloneNode(true));
+            this._root = this._shadowRoot.getElementById("root");
+        }
+
+        onCustomWidgetResize(width, height) {
+            this.render();
+        }
+
+        onCustomWidgetResize(changedProps) {}
+        onCustomWidgetDestory() {}
+
+        render() {
+            this._root.textContent = `Hello Custom Widget client ${this.clientWidth}, clientHeight${this.clientHeight}`;
+        }
     }
 
-    customElements.define('com-sap-sac-exercise-hayoon2-main', Main)
 
+    customElements.define('com-sap-sac-exercise-hayoon2-main', Main)
+	
 })()
