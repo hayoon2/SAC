@@ -20,7 +20,7 @@
         onCustomWidgetResize(width, height) {
             this.render();
         }
-		onCustomWidgetResize(changedProps) {}
+		onCustomWidgetAfterUpdate(changedProps) {}
         onCustomWidgetDestroy() {
         }
 
