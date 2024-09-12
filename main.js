@@ -1,5 +1,5 @@
 (function () {
-    const template = document.createElement('template1') 
+    const template = document.createElement('template') 
     template.innerHTML = `
         <styte>
         </style>
@@ -19,4 +19,4 @@
 
     customElements.define('com-sap-sac-exercise-hayoon2-main', Main)
 
-})()
+})
